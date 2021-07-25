@@ -1,0 +1,26 @@
+<div class="container">
+    <form #form="ngForm" (ngSubmit)=onSubmit(form)>
+        <input type="hidden" name="paymentDetailId" [value]="paymentService.formData.paymentDetailId">
+        <div class="form-group">
+            <label >CARD OWNER NAME</label>
+            <input  class="form-control form-control-lg" placeholder="Full name" name="cardOwnerName" #cardOwnerName="ngModel" [(ngModel)]="paymentService.formData.cardOwnerName" required [class.invalid]="cardOwnerName.invalid && cardOwnerName.touched">
+        </div>
+        <div class="form-group">
+            <label >CARD Number</label>
+            <input  required maxlength="16" minlength="16"  class="form-control form-control-lg" placeholder="cardNumber" name="cardNumber" #cardNumber="ngModel" [(ngModel)]="paymentService.formData.cardNumber" [class.invalid]="cardNumber.invalid && cardNumber.touched">
+        </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+            <label >Sec Code</label>
+            <input  required type="password" class="form-control form-control-lg" placeholder="CCV" name="securityCode" #securityCode="ngModel" [(ngModel)]="paymentService.formData.securityCode" maxlength="3" minlength="3" [class.invalid]="securityCode.invalid && securityCode.touched">
+        </div>
+        <div class="form-group col-md-6">
+            <label >expirationDate</label>
+            <input  required class="form-control form-control-lg" placeholder="MM/YY" name="expirationDate" #expirationDate="ngModel" [(ngModel)]="paymentService.formData.expirationDate" maxlength="5" minlength="5" [class.invalid]="expirationDate.invalid && expirationDate.touched"> 
+        </div>
+      </div>
+      <div class="form-group">
+          <button type="submit" class="btn btn-info btn-lg btn-block" [disabled]="!form.valid" [class.btn-warning]="isUpdate1"> {{initSubmit}}</button>
+    </div>
+    </form>
+</div>

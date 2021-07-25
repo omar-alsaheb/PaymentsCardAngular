@@ -1,0 +1,36 @@
+<div class="jumbotron">
+    <h1 class="display-4 text-center">Payment</h1>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <app-payment-details-form [initSubmit]="submit" [isUpdate1]="isUpdate">
+
+        </app-payment-details-form>
+    </div>
+    <div class="col-md-6">
+    
+
+        <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Card Owner</th>
+                <th scope="col">Card Number</th>
+                <th scope="col">Exp. Date</th>
+                <th scope="col">Oprations</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let p of service.paymentData">
+                <th (click)="editForm(p)">{{p.cardOwnerName}}</th>
+                <td (click)="editForm(p)">{{p.cardNumber}}</td>
+                <td (click)="editForm(p)">{{p.expirationDate}}</td>
+                <td> <i (click)="deleteRecord(p.paymentDetailId)" style="cursor: pointer;" class="fas fa-trash fa-lg text-danger"></i></td>
+              </tr>
+         
+        
+            </tbody>
+          </table>
+          
+         
+    </div>
+</div>
